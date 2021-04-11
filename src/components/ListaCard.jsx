@@ -1,14 +1,18 @@
 import React, { Component } from "react";
-import Card from './Card'
+import Card from "./Card";
 
 export class ListaCard extends Component {
-  state = {};
   render() {
     return (
       <ul>
-        <li>
-            <Card />
-        </li>
+        {Array.of("Trabalho", "Trabalho", "Estudos").map((categoria) => {
+          return (
+            <li>
+              <span>{categoria}</span>
+              <Card />
+            </li>
+          );
+        })}
       </ul>
     );
   }
