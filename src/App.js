@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Formulario from './components/Formulario';
 import ListaCard from './components/ListaCard';
 
-function App() {
-  return (
+class App extends Component {
+  render() {
+    return (
     <section>
-        <Formulario />
-        <ListaCard />
-    </section>
-  );
+      <Formulario />
+      <ListaCard />
+  </section>
+    );
+  }
 }
 
 export default App;
