@@ -8,7 +8,11 @@ export class ListaCard extends Component {
         {this.props.listaDeNotas.map((nota, index) => {
           return (
             <li key={index} className="lista-notas_item">
-              <Card cardNota={nota}/>
+              <Card 
+              indice={index}
+              cardNota={nota}
+              apagarCard={this.props.apagarNota}
+              />
             </li>
           );
         })}

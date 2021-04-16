@@ -11,6 +11,8 @@ constructor(){
   }
 }
 
+
+
   criarNota(titulo, texto){
     const novaNota = {titulo, texto};
     novaNota.titulo = titulo;
@@ -26,11 +28,21 @@ constructor(){
 
   }
 
+  deletarNota(index){
+    let arrayNotas = this.state.notas;
+    arrayNotas.splice(index,1);
+    this.setState({notas:arrayNotas})
+    console.log("deletar...")
+  }
+
   render() {
     return (
     <section className="conteudo">
       <Formulario criarNota={this.criarNota.bind(this)} />
-      <ListaCard listaDeNotas={this.state.notas}/>
+      <ListaCard 
+      listaDeNotas={this.state.notas}
+      apagarNota={this.deletarNota.bind(this)}
+      />
   </section>
     );
   }
