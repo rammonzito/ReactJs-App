@@ -17,6 +17,7 @@ export class Card extends Component {
           <DeleteSVG 
           onClick={this.apagar.bind(this)}
           />
+          <h4 className="card-nota_texto">{this.props.cardNota.categoria}</h4>
           </header>
         <p className="card-nota_texto">{this.props.cardNota.texto}</p>
       </section>

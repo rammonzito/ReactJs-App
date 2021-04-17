@@ -14,13 +14,15 @@ class App extends Component {
       categorias: [],
     }
   }
-  criarNota(titulo, texto) {
+  criarNota(titulo, texto, categoria) {
     const novaNota = {
       titulo,
-      texto
+      texto,
+      categoria
     };
     novaNota.titulo = titulo;
     novaNota.texto = texto;
+    novaNota.categoria = categoria;
 
     const novoArrayNotas = this._adicionarNaLista(this.state.notas, novaNota)
     const novoEstado = {
@@ -38,7 +40,6 @@ class App extends Component {
       const novoArrayCategorias = this._adicionarNaLista(this.state.categorias, novaCateg)
       const novoEstado = {...this.state, categorias: novoArrayCategorias}
       this.setState(novoEstado);
-      console.log(this.state.categorias)
     }
 
     _adicionarNaLista(lista, item){
@@ -58,7 +59,9 @@ class App extends Component {
 
   render() {
     return ( <section className = "conteudo" >
-      <Formulario criarNota = {
+      <Formulario 
+      categorias = {this.state.categorias}
+      criarNota = {
         this.criarNota.bind(this)
       }
       /> <main className = "conteudo-principal">
