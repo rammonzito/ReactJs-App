@@ -3,9 +3,18 @@ import "./estilo.css";
 export default class Formulario extends Component {
   constructor(props) {
     super(props);
+    this.state = {categorias: []}
     this.titulo = "";
     this.texto = "";
     this.categoria = "Sem Categoria";
+  }
+
+  componentDidMount(){
+    this.props.categorias.inscrever(this._novasCategorias.bind(this));
+  }
+
+  _novasCategorias(categorias){
+    this.setState({...this.state, categorias})
   }
 
   _handleMudancaCategoria(evento){
@@ -37,8 +46,8 @@ export default class Formulario extends Component {
         >
           <option>Sem Categoria</option>
 
-          {this.props.categorias.map((categoria) => {
-            return <option>{categoria}</option>;
+          {this.state.categorias.map((categoria, index) => {
+            return <option key={index}>{categoria}</option>;
           })}
         </select>
         <input
