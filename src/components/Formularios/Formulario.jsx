@@ -7,14 +7,19 @@ export default class Formulario extends Component {
     this.titulo = "";
     this.texto = "";
     this.categoria = "Sem Categoria";
+    this._novasCategorias = this._novasCategorias.bind(this);
   }
 
   componentDidMount(){
-    this.props.categorias.inscrever(this._novasCategorias.bind(this));
+    this.props.categorias.inscrever(this._novasCategorias);
+  }
+
+  componentWillUnmount(){
+    this.props.categorias.desinscrever(this._novasCategorias);
   }
 
   _novasCategorias(categorias){
-    this.setState({...this.state, categorias})
+    this.setState({...this.state, categorias: categorias})
   }
 
   _handleMudancaCategoria(evento){
