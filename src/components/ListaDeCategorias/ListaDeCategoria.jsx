@@ -1,37 +1,48 @@
 import React, { Component } from "react";
 import "./estilo.css";
+class ListaDeCategorias extends Component {
+constructor(){
+  super();
+  this.state = {categorias:[]}
+}
 
-class ListaCategorias extends Component {
-  state = {};
+  componentDidMount(){
+    this.props.categorias.inscrever(this._novasCategorias.bind(this));
+  }
+
+  _novasCategorias(catetorias){
+    this.setState({...this.state, catetorias})
+  }
+
 
   _handleEventoInput(e) {
     if (e.key === "Enter") {
-      this.props.criarCategoria(e.target.value);
-      e.currentTarget.value = "";
+      let valorCategoria = e.target.value;
+      this.props.adicionarCategoria(valorCategoria);
     }
-    
   }
+
   render() {
     return (
       <section className="lista-categorias">
         <ul className="lista-categorias_lista">
-          {this.props.listaCategorias.map((categoria, index) => {
+          {this.props.categorias.categorias.map((categoria, index) => {
             return (
               <li key={index} className="lista-categorias_item">
-                {categoria.descricao}
+                {categoria}
               </li>
             );
           })}
         </ul>
         <input
           type="text"
-          className="lista-categoria_input"
-          placeholder="Digite a Categoria"
+          className="lista-categorias_input"
+          placeholder="Adicionar Categoria"
           onKeyUp={this._handleEventoInput.bind(this)}
-        ></input>
+        />
       </section>
     );
   }
 }
 
-export default ListaCategorias;
+export default ListaDeCategorias;
