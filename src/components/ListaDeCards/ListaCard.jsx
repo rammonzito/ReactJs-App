@@ -16,7 +16,7 @@ export class ListaCard extends Component {
     this.props.notas.desinscrever(this._novasNotas);
   }
 
-  _novasNotas(notas){
+  _novasNotas(notas) {
     this.setState({...this.notas, notas: notas})
   }
 
